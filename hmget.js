@@ -34,10 +34,13 @@ platform.core.node({
   if (!redis) error(new Error('Mailjet not configured properly.'));
   else {
     client.hmget([inputs.hash, inputs.key], function (err, res) {
-      output('value', res);
-
-      if(err)
+      if(err) {
         control('error');
+        console.error(err);
+        return ;
+      }
+
+      output('value', res);
     });  
   }
 });
