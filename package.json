@@ -1,6 +1,6 @@
 {
   "name": "connect-redis",
-  "version": "0.0.4",
+  "version": "0.0.1",
   "description": "Redis integration for connect-platform",
   "main": ".",
   "scripts": {
