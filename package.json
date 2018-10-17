@@ -1,0 +1,31 @@
+{
+  "name": "connect-redis",
+  "version": "0.0.4",
+  "description": "Redis integration for connect-platform",
+  "main": ".",
+  "scripts": {
+    "start": "node app",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/must/connect-redis"
+  },
+  "keywords": [
+    "connect-platform",
+    "low-code",
+    "redis",
+    "CONNECT",
+    "no-code"
+  ],
+  "author": "Mustapha Ben Chaaben <mustapha3892@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/must/connect-redis/issues"
+  },
+  "homepage": "https://github.com/must/connect-redis#readme",
+  "dependencies": {
+    "connect-platform": "^0.2.7",
+    "redis": "^2.8.0"
+  }
+}
