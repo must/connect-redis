@@ -1,5 +1,5 @@
 {
-  "name": "connect-redis",
+  "name": "connect-platform-redis",
   "version": "0.0.1",
   "description": "Redis integration for connect-platform",
   "main": ".",
