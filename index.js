@@ -3,6 +3,7 @@ module.exports.platform = {
     nodes : {
       native : [
         'hmget',
+        'hmset',
       ]
     },
     aliases: {
