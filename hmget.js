@@ -8,23 +8,23 @@ platform.core.node({
   path: '/redis/hmget',
   public: false,
   inputs: [
-    'hash',
-    'key'
+    'key',
+    'fields'
   ],
   outputs: [
-    'value'
+    'values'
   ],
   controlOutputs: [
     'error'
   ],
   hints: {
-    node: 'Returns the <span class="hl-blue">value</span> associated with the specified field in the <span class="hl-blue">hash</span> stored at <span class="hl-blue">key</span>.',
+    node: 'Returns the <span class="hl-blue">values</span> associated with the specified <span class="hl-blue">fields</span> in the hash stored at <span class="hl-blue">key</span>.',
     inputs: {
-      hash: 'The hash to be used for search.',
-      key: 'The key to be used for search.'
+      key: 'The has key to be used for the set operation.',
+      fields: 'The field(s) to be used for the set operation.',
     },
     outputs: {
-      value: 'The value of the key/hash provided.'
+      values: 'The returned values.'
     },
     controlOutputs: {
       error: 'An error was triggered during the send process.'
@@ -33,14 +33,16 @@ platform.core.node({
 }, (inputs, output, control, error) => {
   if (!redis) error(new Error('Mailjet not configured properly.'));
   else {
-    client.hmget([inputs.hash, inputs.key], function (err, res) {
+    inputs.fields = Array.isArray(inputs.fields) ? inputs.fields : [inputs.fields];
+
+    client.hmget(inputs.key, inputs.fields, function (err, res) {
       if(err) {
         control('error');
         console.error(err);
         return ;
       }
 
-      output('value', res);
+      output('values', res);
     });  
   }
 });

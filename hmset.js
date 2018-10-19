@@ -8,9 +8,9 @@ platform.core.node({
   path: '/redis/hmset',
   public: false,
   inputs: [
-    'hash',
     'key',
-    'value'
+    'fields',
+    'values'
   ],
   outputs: [
   ],
@@ -19,20 +19,28 @@ platform.core.node({
     'error'
   ],
   hints: {
-    node: 'Inserts the <span class="hl-blue">value</span> associated with the specified field in the <span class="hl-blue">hash</span> stored at <span class="hl-blue">key</span>.',
+    node: 'Sets the specified <span class="hl-blue">fields</span> to their respective <span class="hl-blue">values</span> in the key stored at <span class="hl-blue">key</span>.',
     inputs: {
-      hash: 'The hash to be used for inserting the value.',
-      key: 'The key to be used for search.',
-      value: 'The value of the key/hash provided.'
+      key: 'The has key to be used for the set operation.',
+      fields: 'The field(s) to be used for the set operation.',
+      values: 'The values to be set.'
     },
     controlOutputs: {
-      error: 'An error was triggered during the send process.'
+      error: 'An error was triggered during the set operation.'
     },
   }
 }, (inputs, output, control, error) => {
   if (!redis) error(new Error('Mailjet not configured properly.'));
   else {
-    client.hmset([inputs.hash, inputs.key, inputs.value], function (err, res) {
+    inputs.fields = Array.isArray(inputs.fields) ? inputs.fields : [inputs.fields];
+    inputs.values = Array.isArray(inputs.values) ? inputs.values : [inputs.values];
+    
+    var inputKeyValue = [];
+    inputs.fields.forEach(function(element, i) {
+      inputKeyValue.push(element, inputs.values[i]);
+    });
+
+    client.hmset(inputs.key, inputKeyValue, function (err, res) {
       if(err) {
         control('error');
         console.error(err);
