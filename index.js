@@ -4,6 +4,11 @@ module.exports.platform = {
       native : [
         'hmget',
         'hmset',
+        'hget',
+        'hset',
+        'hgetall',
+        'hkeys',
+        'hvals',
       ]
     },
     aliases: {
