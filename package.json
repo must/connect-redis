@@ -1,6 +1,6 @@
 {
   "name": "connect-platform-redis",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Redis integration for connect-platform",
   "main": ".",
   "scripts": {
@@ -25,7 +25,12 @@
   },
   "homepage": "https://github.com/must/connect-redis#readme",
   "dependencies": {
-    "connect-platform": "^0.2.7",
     "redis": "^2.8.0"
+  },
+  "peerDependencies": {
+    "connect-platform": "*"
+  },
+  "devDependencies": {
+    "connect-platform": "^0.2.7"
   }
 }
