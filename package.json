@@ -25,12 +25,12 @@
   },
   "homepage": "https://github.com/must/connect-redis#readme",
   "dependencies": {
-    "redis": "^2.8.0"
+    "redis": "^3.0.2"
   },
   "peerDependencies": {
     "connect-platform": "*"
   },
   "devDependencies": {
-    "connect-platform": "^0.2.7"
+    "connect-platform": "^0.2.17"
   }
 }
