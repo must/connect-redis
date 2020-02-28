@@ -5,42 +5,40 @@ const platform = require('connect-platform');
 
 
 platform.core.node({
-  path: '/redis/hget',
+  path: '/redis/set',
   public: false,
   inputs: [
     'key',
-    'field'
-  ],
-  outputs: [
     'value'
   ],
+  outputs: [
+  ],
   controlOutputs: [
+    'done',
     'error'
   ],
   hints: {
-    node: 'Returns the <span class="hl-blue">value</span> associated with field in the hash stored at <span class="hl-blue">key</span>.',
+    node: 'Set a <span class="hl-blue">value</span> to the <span class="hl-blue">key</span>.',
     inputs: {
-      key: 'The has key to be used for the get operation.',
-      field: 'The field(s) to be used for the set operation.'
-    },
-    outputs: {
-      value: 'The returned value.'
+      key: 'The has key to be used for the set operation.',
+      value: 'The value to be set.'
     },
     controlOutputs: {
+      done: 'The operation successfully completed.',
       error: 'An error was triggered during the send process.'
     },
   }
 }, (inputs, output, control, error) => {
   if (!redis) error(new Error('Redis not configured properly.'));
   else {
-    client.hget(inputs.key, inputs.field, function (err, res) {
+    client.set(inputs.key, inputs.value, function (err, res) {
       if(err) {
         control('error');
         console.error(err);
         return ;
       }
 
-      output('value', res);
+      control('done');
     });  
   }
 });

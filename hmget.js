@@ -31,7 +31,7 @@ platform.core.node({
     },
   }
 }, (inputs, output, control, error) => {
-  if (!redis) error(new Error('Mailjet not configured properly.'));
+  if (!redis) error(new Error('Redis not configured properly.'));
   else {
     inputs.fields = Array.isArray(inputs.fields) ? inputs.fields : [inputs.fields];
 
