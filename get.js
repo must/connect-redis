@@ -19,7 +19,7 @@ platform.core.node({
   hints: {
     node: 'Gets the <span class="hl-blue">value</span> associated with the <span class="hl-blue">key</span>.',
     inputs: {
-      key: 'The has key to be used for the get operation.',
+      key: 'The key to be used for the get operation.',
       value: 'The returned value.'
     },
     controlOutputs: {
