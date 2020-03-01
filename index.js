@@ -10,7 +10,8 @@ module.exports.platform = {
         'hkeys',
         'hvals',
         'set',
-        'get'
+        'get',
+        'del'
       ]
     },
     aliases: {
