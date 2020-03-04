@@ -11,7 +11,8 @@ module.exports.platform = {
         'hvals',
         'set',
         'get',
-        'del'
+        'del',
+        'expire'
       ]
     },
     aliases: {

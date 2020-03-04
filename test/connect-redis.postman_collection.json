@@ -132,6 +132,48 @@
 			"response": []
 		},
 		{
+			"name": "del",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"field\": \"field\",\n\t\"value\": \"value\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/del?key=testing_hset",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"del"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "testing_hset"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "hget",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -338,7 +380,41 @@
 			"response": []
 		},
 		{
-			"name": "set Copy",
+			"name": "expire",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/expire?key=testing_set&ttl=10",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"expire"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "testing_set"
+						},
+						{
+							"key": "ttl",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get",
 			"request": {
 				"method": "GET",
 				"header": [

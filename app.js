@@ -28,7 +28,7 @@ platform
      * run the test instance on port 4000.
      *
      */
-    port: 4000,
+    port: 4005,
 
     /**
      *
